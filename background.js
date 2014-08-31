@@ -45,7 +45,10 @@ chrome.runtime.onMessage.addListener(
 	
 	function send(dat)
 	{
-	chrome.tabs.query();
+	chrome.tabs.query({url:"http://screenreader.mybluemix.net/"}, function callback(tabs)
+    {
+	//tabs[0];
+	}
 	}
 	
 	
