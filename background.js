@@ -45,7 +45,7 @@ chrome.runtime.onMessage.addListener(
 	
 	function send(dat)
 	{
-	//chrome.tabs.query();
+	chrome.tabs.query();
 	}
 	
 	
