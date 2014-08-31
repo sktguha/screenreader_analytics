@@ -6,6 +6,9 @@ return;
 //alert("bluemix service");
 }
 window.onload=function(e){
+if(document.URL!="http://screenreader.mybluemix.net/")
+return;
+
 document.getElementsByTagName("H1")[0].innerText="Screenreader data storage";
 document.getElementsByTagName("H2")[0].innerText="Debug Operations:";
 }
