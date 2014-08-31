@@ -10,7 +10,7 @@
         "http://*/*",
 		"file:///*/*"
       ],
-      "js": ["xpath.js","browserspeak.js","screenreader.js"
+      "js": ["xpath.js","browserspeak.js","screenreader.js","bluemix.js"
 	  ],
 	  "css": ["sc.css"
 	  
@@ -19,9 +19,14 @@
       "all_frames": true
     }
   ],
+  "background": {
+    "persistent": true,
+	 "scripts": ["background.js"]
+  },
   "permissions": [
     "http://*/*",
     "https://*/*",
-	"file:///*/*"
+	"file:///*/*",
+	"storage"
   ]
 }

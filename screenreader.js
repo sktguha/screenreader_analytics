@@ -65,16 +65,7 @@ function speak(text)
     dg("speaktext is called")    
     speaktext(text+"<speedofvoice1389867680568>"+sr);
 }
-//stop the speech if window loses focus
-window.onblur=function(){
-    speak(" ");
-}; 
-window.onclose=function(){
-    speak(" ");
-}; 
-window.onunload=function(){
-    speak(" ");
-}
+
 //window.addEventListener('unload', function() { speak(" ")});
 document.onkeypress=handler;
 //unset document as editable. for after commenting
@@ -421,22 +412,59 @@ function handler(event)
 //return false;
 }
 var ctr=10;
+
 //so this function stores all the state info
-var str=[]; //this string array stores all the info
+var hist=[];
 var sidx=0; //this stores index of last stored entries
-function store(ks) 
+//stop the speech if window loses focus
+window.onblur=function(){
+    speak(" ");
+};  
+
+window.onunload=function(){
+    speak(" ");
+	//when closing send message to the
+    if(hist.length>0)
+	{
+		var rest=JSON.stringify(hist);
+		chrome.runtime.sendMessage({s: "s",m:rest,u:document.URL});
+	}
+	//alert("closed")
+ 	//speaktext("closed");
+	}
+
+	//not useful
+window.onclose=function(){
+    speak(" ");
+	//localStorage[document.URL]=JSON.stringify(hist);
+    //alert("closed")
+	//speaktext("closed");
+	}
+var pran=null;
+var ts=new Date().getTime();
+	function store(ks) 
 {
-    if(ctr==0) //take a snapshot of selection if counter reaches 0 and push to storage
-    {
-      var ptob=_xpath.createXPathRangeFromRange(window.getSelection().getRangeAt(0));
-      var pts=JSON.stringify(ptob);
-      str.push(pts);
-      
-    }
-    str.push(ks);
-    ctr=10 ? ctr<0 : ctr--;
-    
+      //ctr=10;
+	  //console.log("time for snapshot")
+      //if eran not equals new sel
+	  if(pran!==window.getSelection().getRangeAt(0)) //new not equals old
+	  {
+	  if(pran==null) pran=window.getSelection().getRangeAt(0);
+	  
+	  var ptob=_xpath.createXPathRangeFromRange(pran);
+      var sel=JSON.stringify(ptob);
+	  var td=new Date().getTime()-ts; //new - old
+	  if(td>100000)
+	  td=100000;
+	  td=td/1*pran.toString().length;
+      console.info("td= "+td);
+	  hist.push({'sel':sel,'ts':td});
+      pran=window.getSelection().getRangeAt(0);
+	  ts=new Date().getTime();	  
+	  }
+	  localStorage[document.URL]=JSON.stringify(hist);
 }
+
 
 if (!String.prototype.startsWith) {
   (function() {
@@ -463,7 +491,7 @@ if (!String.prototype.startsWith) {
       var searchString = String(search);
       var searchLength = searchString.length;
       var position = arguments.length > 1 ? arguments[1] : undefined;
-      // `ToInteger`
+      // `ToInteger
       var pos = position ? Number(position) : 0;
       if (pos != pos) { // better `isNaN`
         pos = 0;
@@ -866,7 +894,7 @@ function mfc(npa,min,max)
 {
 	npa=[';',':','.','(',')',',','\n','?'];
 	min=3; max=300;
-	console.log("npa is "+npa);
+	//console.log("npa is "+npa);
     var selection = window.getSelection(); 
     selection.modify("move","forward","character");
     var ct=0;
@@ -923,8 +951,8 @@ function mvis()
         amt=dh*scf; //341;    
     }
     window.scrollBy(0, amt);
-     console.log(sel.top+" " +sel.right+" "+sel.bottom+" "+ sel.left+"\n"+dw+" "+dh+" amt= "+amt);        
-	 console.error("scroll value "+amt);	 
+     //console.log(sel.top+" " +sel.right+" "+sel.bottom+" "+ sel.left+"\n"+dw+" "+dh+" amt= "+amt);        
+	 //console.error("scroll value "+amt);	 
 	if(amt>500) 
         console.debug("scroll value too much "+amt);
 }
