@@ -2,7 +2,7 @@
 "manifest_version":2,
 "name": "screenreader with analytics",
   "version": "0.1",
-  "description" : "read web pages aloud easily.now with analytics and heatmap",
+  "description" : "read web pages aloud easily.now find out where you got stuck with a heatmap",
   "content_scripts": [
     {
       "matches": [
@@ -19,6 +19,9 @@
       "all_frames": true
     }
   ],
+  "browser_action": {
+          "default_icon": "icon.png"
+   },
   "background": {
     "persistent": true,
 	 "scripts": ["background.js"]

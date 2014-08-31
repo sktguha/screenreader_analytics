@@ -63,7 +63,7 @@ function _formatCommand(command, args)
 var ind=6;
 function _speakText()
 {
-	//if three errors , speak platform independant
+	//if six errors , speak platform independant
 	if(ind==1)
 	{
 	speaktextInd(selectedText);
@@ -73,7 +73,7 @@ function _speakText()
     
     image.src = _formatCommand("speaktext", "?text=" + selectedText); 
     //if server not there fall back to default implementation
-	image.onerror = function() { _showerror()};
+	image.onerror = function() { ind--; };
     //image.onload=alert("loaded");
 }
 
