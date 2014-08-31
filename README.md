@@ -1,3 +1,7 @@
+if for some reason this does not work check https://github.com/sktguha/screenreader_deploy_ready_standalone
+and https://github.com/sktguha/screenreader-dependant
+They are well tested and debugged versions , although without heatmap functionality
+
 screenreader_analytics
 ======================
 
