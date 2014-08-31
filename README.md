@@ -11,5 +11,4 @@ aloud i.e u will hear the sound from the speakers
 similiarly 'm' key goes to previous line and reads it.(i.e upto previous full stop)
 ' to go upto next punctuation mark
 ; to go upto previous punctuation mark
- = key to increase speech rate
- - key to decrease speech rate
+ = key to increase speech rate - key to decrease speech rate
