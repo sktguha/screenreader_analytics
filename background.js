@@ -40,7 +40,7 @@ chrome.runtime.onMessage.addListener(
 	);
 	
 	chrome.browserAction.onClicked.addListener(function (tab){
-	alert("sorry. the functionality is not working yet :(")
+	alert("sorry. the heatmap functionality is not working yet :(")
             //var ch=window.prompt("Input choice\n1.get my heatmap for this page\n2.change username\n3.switch windows(requires browserspeak.exe)/platform independant versions","1");
 	});
 	
