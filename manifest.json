@@ -1,8 +1,8 @@
 {
 "manifest_version":2,
-"name": "screenreader",
+"name": "screenreader with analytics",
   "version": "0.1",
-  "description" : "read web pages aloud easily",
+  "description" : "read web pages aloud easily.now with analytics and heatmap",
   "content_scripts": [
     {
       "matches": [

@@ -19,6 +19,7 @@ var _xpath = {
         }
         return paths.length ? "/" + paths.join("/") : null
     },
+    //makes the selection suitable for storage
     createXPathRangeFromRange: function(range) {
         "use strict";
         return {
@@ -45,7 +46,8 @@ var _xpath = {
         var range = document.createRange();
         return range.setStart(startContainer.singleNodeValue, xpathRange.startOffset), range.setEnd(endContainer.singleNodeValue, endOffset), range
     },
-	_getXPathFromNode2 = function( element ) {
+    //not from original one
+    _getXPathFromNode2 :function( element ) {
     var paths = [];
 
     // Use nodeName (instead of localName) so namespace prefix is included (if any).
