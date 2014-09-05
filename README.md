@@ -4,7 +4,7 @@ They are well tested and debugged versions , although without heatmap functional
 
 screenreader_analytics
 ======================
-
+my apologies but heatmap functionality does not work yet. i will be looking into it
 
 video tutorial(http://youtu.be/gmfv3QHrwfM) or a simple description below
 ----------KEYMAP-----------
